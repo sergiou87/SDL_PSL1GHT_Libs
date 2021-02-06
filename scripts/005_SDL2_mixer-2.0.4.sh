@@ -1,10 +1,10 @@
-wget --continue http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz || { exit 1; }
+./download.sh SDL2_mixer-2.0.4.tar.gz || { exit 1; }
 
-tar xfvz ./SDL2_mixer-2.0.4.tar.gz || { exit 1; }
+tar xfvz archives/SDL2_mixer-2.0.4.tar.gz || { exit 1; }
 
 cd SDL2_mixer-2.0.4 || { exit 1; }
 
-cp ../config.sub ../config.guess build-scripts/ || { exit 1; }
+cp ../archives/config.sub ../archives/config.guess build-scripts/ || { exit 1; }
 
 #cat ../patches/SDL2_mixer-2.0.4.patch | patch -p1 || { exit 1; }
 
@@ -14,6 +14,7 @@ export LIBMIKMOD_CONFIG
 	--disable-sdltest \
 	--with-sdl-exec-prefix="$PS3DEV/portlibs/ppu" \
 	--disable-shared \
+	--enable-music-mod-mikmod \
 	--disable-music-cmd \
 	--disable-music-ogg-shared \
 	--disable-music-mp3 \
